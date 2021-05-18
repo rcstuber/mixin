@@ -60,7 +60,7 @@ class Mixin
 		
 		if (!declaredProperly(lc)) Context.fatalError('Mixin should be declared as non-extern interface with @mixin meta present', lc.pos);
 		
-		if (Context.getLocalUsing().length > 0) Context.fatalError('Mixins module with usings are not supported', lc.pos);
+		//if (Context.getLocalUsing().length > 0) Context.fatalError('Mixins module with usings are not supported', lc.pos);
 
 		var typeParams = lc.params.map(function (tp) return tp.name);
 		var baseExtends:Array<String> = [];		
@@ -218,7 +218,8 @@ class Mixin
 		// error if mixin was included twice or more somewhere in hierarchy 		
 		var includedIn = whereMixinWasIncluded(lc, mixinFql, true);
 		if (includedIn != null)
-			Context.fatalError('Mixin <${mixinFql}> was already included in <${getFqlClassName(includedIn)}>', includedIn.pos);
+			return null;
+			//Context.fatalError('Mixin <${mixinFql}> was already included in <${getFqlClassName(includedIn)}>', includedIn.pos);
 		
 
 		markAsMixinWasIncludedHere(lc, mixinFql);
@@ -227,11 +228,11 @@ class Mixin
 		var fields = Context.getBuildFields();
 		var cached = mixins.get(mixinFql);
 
-		#if display
+		//#if display
 		if(null == cached) {
 			return null;
 		}
-		#end
+		//#end
 		
 		for (shouldImplement in cached.baseImplements)
 		{

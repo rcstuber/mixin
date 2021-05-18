@@ -100,7 +100,8 @@ class Typer
 					addImport(subModule, alias);					
 					
 				case IAll:					
-					throw 'Wildcard imports are not supported in mixins';	// ComplexType resolution is mostly manual, Mixin should know the exact location of an import
+					// Patched!
+					//throw 'Wildcard imports are not supported in mixins';	// ComplexType resolution is mostly manual, Mixin should know the exact location of an import
 			}			
 		}
 		

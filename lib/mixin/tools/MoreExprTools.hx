@@ -55,7 +55,7 @@ class MoreExprTools
 	{
 		try {
 			var value = e.getValue();
-			if (Std.is(value, Bool)) 
+			if (Std.isOfType(value, Bool)) 
 				return value;
 				
 		} catch (ignore:Dynamic) {}
